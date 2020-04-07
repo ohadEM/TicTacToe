@@ -18,6 +18,15 @@ public class TTT {
 
 		initializeBoard();
 	}
+	
+	public TTT(int rows, int columns) {
+		this.rows = rows;
+		this.columns = columns;
+		board = new char[rows][columns];
+		currentPlayerMark = 'X';
+
+		initializeBoard();
+	}
 
 	public char getCurrentPlayerMark() {
 		return currentPlayerMark;

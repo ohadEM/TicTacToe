@@ -2,8 +2,7 @@ import java.util.Scanner;
 
 public class Main {
 	
-	private static int row;
-	private static int column;
+	private static int position;
 
 	public static void main(String[] args) {
 		
@@ -19,14 +18,11 @@ public class Main {
 			
 			do {
 				System.out.println("Player " + game.getCurrentPlayerMark() + 
-						", enter an empty row and column to place your mark!");
+						", enter a position to place your mark!");
 				
-//				row = scan.nextInt() - 1;
-//				column = scan.nextInt() - 1;
+				position = scan.nextInt();
 				
-				row = scan.nextInt();
-				
-			} while (!game.placeMark(row));
+			} while (!game.placeMark(position));
 			
 			
 		} while (!(game.checkForWin() || game.isBoardFull()));
