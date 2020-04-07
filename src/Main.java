@@ -27,13 +27,13 @@ public class Main {
 			} while (!game.placeMark(row, column));
 			
 			
-		} while (game.checkForWin() || game.isBoardFull());
+		} while (!(game.checkForWin() || game.isBoardFull()));
+		
+		System.out.println("Current board layout:");
+		game.printBoard();
 		
 		if (game.checkForWin()) {
 			
-			System.out.println("Current board layout:");
-			
-			game.printBoard();
 			game.changePlayer();
 			System.out.println(game.getCurrentPlayerMark() + " Wins!");
 			

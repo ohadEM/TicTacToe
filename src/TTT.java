@@ -162,7 +162,7 @@ public class TTT {
 		}
 
 		board[row][col] = currentPlayerMark;
-
+		changePlayer();
 		return true;
 	}
 }
