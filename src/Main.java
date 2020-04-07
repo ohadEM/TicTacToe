@@ -21,10 +21,12 @@ public class Main {
 				System.out.println("Player " + game.getCurrentPlayerMark() + 
 						", enter an empty row and column to place your mark!");
 				
-				row = scan.nextInt() - 1;
-				column = scan.nextInt() - 1;
+//				row = scan.nextInt() - 1;
+//				column = scan.nextInt() - 1;
 				
-			} while (!game.placeMark(row, column));
+				row = scan.nextInt();
+				
+			} while (!game.placeMark(row));
 			
 			
 		} while (!(game.checkForWin() || game.isBoardFull()));

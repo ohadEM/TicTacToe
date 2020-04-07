@@ -24,17 +24,16 @@ public class TTT {
 	}
 
 	public void initializeBoard() {
-		//char c = '0';
-		
-		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < columns; j++) {
-				
-				// c = (3*i) + j)
-				board[i][j] = '-'; //instead put c to number places.
+		// char c = '0';
+
+		for (Integer i = 0; i < rows; i++) {
+			for (Integer j = 0; j < columns; j++) {
+
+				// c = (3*i) + j;
+				board[i][j] = (char) ((3 * i + j) + '1'); // instead put c to number places.
 			}
 		}
 	}
-	
 
 	/**
 	 * Print the board.
@@ -53,12 +52,13 @@ public class TTT {
 			System.out.println("-------------");
 		}
 	}
-	
+
 	public boolean isBoardFull() {
 
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[0].length; j++) {
-				if (board[i][j] == '-') {
+
+				if (isNumber(board[i][j])) {
 
 					return false;
 				}
@@ -113,16 +113,16 @@ public class TTT {
 	}
 
 	/**
-	 * Check if the 3 inputs are same value and not '-'.
+	 * Check if the 3 inputs are same value and not a number.
 	 * 
 	 * @param c1 First location.
 	 * @param c2 Second location.
 	 * @param c3 Third location.
-	 * @return true if all the 3 inputs are same value and not '-'.
+	 * @return true if all the 3 inputs are same value and not a number.
 	 */
 	private boolean checkRowCol(char c1, char c2, char c3) {
 
-		if (c1 == '-') {
+		if (isNumber(c1)) {
 			return false;
 		}
 
@@ -142,27 +142,47 @@ public class TTT {
 	}
 
 	/**
-	 * Place the correct letter onto the specified row 
-	 * and column in the board variable.
+	 * Place the correct letter onto the specified row and column in the board
+	 * variable.
 	 * 
 	 * @param row The row in the board.
 	 * @param col The column in the board.
 	 * @return
 	 */
 	public boolean placeMark(int row, int col) {
-		
+
 		// Out of bounds.
 		if ((row < 0) && (row >= rows) && (col < 0) && (col >= columns)) {
 			return false;
 		}
 
 		// Not available place.
-		if (board[row][col] != '-') {
+		if (!isNumber(board[row][col])) {
 			return false;
 		}
 
 		board[row][col] = currentPlayerMark;
 		changePlayer();
 		return true;
+	}
+
+	public boolean placeMark(int position) {
+
+		// Out of bounds.
+		if ((position < 1) || (position > 9)) {
+			return false;
+		}
+		
+		position--;
+
+		int col = position % 3;
+		int row = position / 3;
+
+		return placeMark(row, col);
+	}
+
+	private static boolean isNumber(char c) {
+
+		return (c >= '0') && (c <= '9');
 	}
 }
