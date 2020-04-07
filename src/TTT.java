@@ -5,27 +5,36 @@
  */
 public class TTT {
 
-	private char[][] board; // The game board.
 	private int rows;
 	private int columns;
+	private char[][] board; // The game board.
 	private char currentPlayerMark; // Hold either an 'x' or 'o'.
 
 	public TTT() {
 		rows = 3;
 		columns = 3;
+		board = new char[rows][columns];
 		currentPlayerMark = 'X';
 
+		initializeBoard();
+	}
+
+	public char getCurrentPlayerMark() {
+		return currentPlayerMark;
 	}
 
 	public void initializeBoard() {
-
+		//char c = '0';
+		
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
-
-				board[i][j] = '-';
+				
+				// c = (3*i) + j)
+				board[i][j] = '-'; //instead put c to number places.
 			}
 		}
 	}
+	
 
 	/**
 	 * Print the board.
@@ -35,16 +44,16 @@ public class TTT {
 		System.out.println("-------------");
 
 		for (int i = 0; i < rows; i++) {
-			System.out.println("| ");
+			System.out.print("| ");
 
 			for (int j = 0; j < columns; j++) {
-				System.out.println(board[i][j] + " | ");
+				System.out.print(board[i][j] + " | ");
 			}
 			System.out.println();
 			System.out.println("-------------");
 		}
 	}
-
+	
 	public boolean isBoardFull() {
 
 		for (int i = 0; i < board.length; i++) {
